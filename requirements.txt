@@ -6,5 +6,6 @@ httpx
 requests
 pydantic
 supabase
+email-validator
 
 
