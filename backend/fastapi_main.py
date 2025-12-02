@@ -33,10 +33,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Supabase client
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")  # Service key for backend
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+import os
+
+SUPABASE_URL = (
+    os.getenv("SUPABASE_URL")
+    or os.getenv("SUPABASE_API_URL")
+    or os.getenv("SUPABASE_PROJECT_URL")
+)
+
+SUPABASE_KEY = (
+    os.getenv("SUPABASE_KEY")
+    or os.getenv("SUPABASE_API_KEY")
+    or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    or os.getenv("SUPABASE_ANON_KEY")
+)
+
 
 # Security
 security = HTTPBearer()
