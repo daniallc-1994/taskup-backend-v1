@@ -22,27 +22,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
     "http://localhost:5173",
-
+    "http://localhost:5174",
     "https://taskup.no",
     "https://www.taskup.no",
-
     "https://taskup-frontend.vercel.app",
-
-    "https://taskup-backend-v1-production.up.railway.app",
 ]
 
+# Single CORS middleware with explicit origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
