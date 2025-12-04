@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 
+from profile.profile_routes import router as profile_router
+from auth.auth_routes import router as auth_router
+
 app = FastAPI()
 
 
@@ -8,10 +11,6 @@ def read_root():
     return {"status": "ok"}
 
 
-# TEMPORARILY DISABLE ROUTERS TO DEBUG
-
-# from profile.profile_routes import router as profile_router
-# app.include_router(profile_router, prefix="/api")
-
-# from auth.auth_routes import router as auth_router
-# app.include_router(auth_router, prefix="/api")
+# Include routers AFTER the app is created
+app.include_router(profile_router, prefix="/api")
+app.include_router(auth_router, prefix="/api")
