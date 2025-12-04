@@ -7,10 +7,10 @@ app = FastAPI()
 
 
 @app.get("/")
-def read_root():
+async def read_root():
     return {"status": "ok"}
 
 
-# Include routers AFTER the app is created
+# Routers must be added AFTER app is created
 app.include_router(profile_router, prefix="/api")
 app.include_router(auth_router, prefix="/api")
